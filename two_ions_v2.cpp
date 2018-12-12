@@ -9,6 +9,13 @@ Lovely Professional University
 */
 
 /*
+ 
+ * Contributor: SAYAN ADHIKARI, CPP-IPR
+ *
+ 
+*/
+
+/*
 Brief Description: The code solves 1D-1V plasma sheath problem.
 
 The code objectives:
@@ -22,11 +29,13 @@ The code objectives:
 # include <cmath>
 # include <cstdlib>
 # include <vector>
+# include <iterator>        /* Added by SAYAN 12/12/2018  */
 # include <list>
 # include <ctime>
 # include <random>
 # include <cstring>
 # include <fstream>
+
 using namespace std;
 
 /* Random Number Generator */
@@ -36,6 +45,17 @@ double rnd()
 {
 	return rnd_dist(mt_gen);
 }
+
+/* FUNCTION - LOADING VARIABLES FROM TEXT FILE (ADDED BY SAYAN on 12/12/2018) */
+
+void getItems(vector<string>& var, string path)
+{
+    ifstream is(path.c_str());
+    istream_iterator<string> start(is), end;
+    vector<string> items(start, end);
+    var = items;
+}
+
 
 /* Define universal constants */
 const double EPS = 8.85418782E-12;    // Vacuum permittivity
@@ -60,7 +80,7 @@ const int NUM_IONS_2 = 20000;      // Number of simulation ions
 const int NUM_ELECTRONS = 50000; // Number of simulation electrons
 
 const int NC =  200;             // Total number of cells
-const int NUM_TS = 5000;          // Total time steps 
+const int NUM_TS = 1000;          // Total time steps 
 
 /* Class Domain: Hold the domain parameters*/
 class Domain
@@ -172,14 +192,9 @@ int main()
 {		
 	double Time = 0;
 	
-	/*File opening */
-	fstream file;
-	file.open("input.txt",ios::in);
-	if(!file)
-	{
-	  cout << "Error in opening the file: " << endl;
-	  return 0;	
-	}
+	/* FOR LOADING INPUTS ADDED BY SAYAN on 12/12/2018*/
+	vector<string> var;
+	getItems(var,"input.txt");
 	
 	/*Construct the domain parameters*/	
 	domain.ni = NC+1;
@@ -214,11 +229,15 @@ int main()
 	This parameter is responsible for the percentage of two ions respectively.
 	alpha = 0.3 means 30 percent of that species*/
 	
-	double ALP;
-	file>>ALP;  	
+	/* STORING DATA FROM VECTOR TO VARIABLE ADDED BY SAYAN on 12/12/2018*/
+	double ALP = std::stod(var[1]); 
+	double mass_1 = std::stod(var[3])*AMU;
+	double mass_2 = std::stod(var[5])*AMU;	
+
+	
 	// double ALP = 0.8; // Determines the percentage contribution of First Ion.
-	double mass_1 = 8*AMU; // mass of the heavier particle
-	double mass_2 = 4*AMU; // mass of the lighter particle
+	//double mass_1 = 8*AMU; // mass of the heavier particle
+	//double mass_2 = 4*AMU; // mass of the lighter particle
 	
 	/*Calculate the specific weights of the ions and electrons*/
 	double spwt_1 = (ALP*PLASMA_DEN*domain.xl)/(NUM_IONS_1);
