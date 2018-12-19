@@ -30,12 +30,13 @@ for j = 1:4
 
 
 hold all;
-   figure(3);
+   figure(1);
    subplot(4,1,j);
    ksdensity(VXsp(j,:),'function','pdf');
 
    xlabel(['Velocity (m/s) location: ' num2str(range1(j)) ' - ' num2str(range2(j))]);
    title('Probability Density Function');
+   print('distf_elec','-dpng');
 
 end
 hold all
