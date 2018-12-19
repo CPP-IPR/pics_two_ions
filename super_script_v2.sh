@@ -106,7 +106,7 @@ echo "DONE!"
 echo "COPYING PLOTS TO GIT....."
 cd run2/
 git add *.png
-git commit -m "Plots from run 1"
+git commit -m "Plots from run 2"
 git push
 cd ..
 echo "DONE!"
@@ -157,7 +157,7 @@ echo "DONE!"
 echo "COPYING PLOTS TO GIT....."
 cd run3/
 git add *.png
-git commit -m "Plots from run 1"
+git commit -m "Plots from run 3"
 git push
 cd ..
 echo "DONE!"

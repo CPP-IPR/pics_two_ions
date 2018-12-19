@@ -1,5 +1,5 @@
 
-clc; clearvars;
+clc; clearvars; close all;
 Max_time_step = 15000;
 time_interval = 50;
 n=Max_time_step/time_interval;

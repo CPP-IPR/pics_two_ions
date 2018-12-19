@@ -1,5 +1,5 @@
 
-clc; clearvars ;
+clc; clearvars ; close all;
 format long
 eps = 8.85E-12;
 eV = 1.6E-19;
@@ -122,28 +122,37 @@ for i=1:length(data(:,1))/n
     L2_prev = L2_new;        
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     Time = Time + 50*DT;
-    %mov(i) = getframe(gcf);
+%     mov(i) = getframe(gcf);
 end
- %movie2gif(mov, 'plot2.gif','DelayTime',0.5,'LoopCount',5)
+%  movie2gif(mov, 'plot2.gif','DelayTime',0.5,'LoopCount',5)
 figure(1)
 [acor1,lag1] = xcorr(A1,B1);
 subplot(311), plot(lag1,acor1,'linew',2), grid on
+xlabel('Time lag'),ylabel('Correlation')
+title('Mid plane')
 
 [acor2,lag2] = xcorr(A2,B2);
 subplot(312), plot(lag2,acor2,'linew',2), grid on
+xlabel('Time lag'),ylabel('Correlation')
+title('Right to Mid plane')
 
 [acor3,lag3] = xcorr(A3,B3);
 subplot(313), plot(lag3,acor3,'linew',2), grid on
+xlabel('Time lag'),ylabel('Correlation')
+title('Left to Mid plane')
+print('lags_corr','-dpng');
 
-figure(2)
-plot(T, A2, 'r', T, B2, 'b','linew',2), grid on
+%figure(2)
+%plot(T, A2, 'r', T, B2, 'b','linew',2), grid on
+%print('TA_TB','-dpng');
 
-figure(3)
-[acf,lags] = xcorr(A1);
-plot(lags,acf),grid on
+%figure(3)
+%[acf,lags] = xcorr(A1);
+%plot(lags,acf),grid on
+%print('lags_acf','-dpng');
 
-figure(4)
-subplot(311), plot(A1,B1,'.','linew',2), grid on
-subplot(312), plot(A2,B2,'.','linew',2), grid on
-subplot(313), plot(A3,B3,'.','linew',2), grid on
-
+%figure(4)
+%subplot(311), plot(A1,B1,'.','linew',2), grid on
+%subplot(312), plot(A2,B2,'.','linew',2), grid on
+%subplot(313), plot(A3,B3,'.','linew',2), grid on
+%print('phase','-dpng');

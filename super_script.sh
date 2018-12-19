@@ -4,6 +4,11 @@ clear
 echo "*****************************************"
 echo "*********** WELCOME TO PICS2i ***********"
 echo "*****************************************"
+echo "Developers: Dr. R. Moulick, LPU and Mr. S. Adhikari, CPP-IPR"
+echo "#############################################################"
+echo "Housekeeping in progress....."
+rm -rf run1 run2 run3
+echo "Housekeeping Completed!"
 ######################################################
 #
 #		     RUN - 1
