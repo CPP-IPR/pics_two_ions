@@ -50,6 +50,7 @@ echo ">>>>>>>>>>>>>>>PLOTTING SOME DATAS>>>>>>>>>>>>>>>>>"
 echo "Wait................"
 cd run1/
 matlab -nodesktop -nosplash -r "plot_res; exit;"
+matlab -nodesktop -nosplash -r "dist_part; exit;"
 cd ..
 echo "DONE!"
 echo "COPYING PLOTS TO GIT....."
@@ -101,6 +102,7 @@ echo ">>>>>>>>>>>>>>>PLOTTING SOME DATAS>>>>>>>>>>>>>>>>>"
 echo "Wait................"
 cd run2/
 matlab -nodesktop -nosplash -r "plot_res; exit;"
+matlab -nodesktop -nosplash -r "dist_part; exit;"
 cd ..
 echo "DONE!"
 echo "COPYING PLOTS TO GIT....."
@@ -152,6 +154,7 @@ echo ">>>>>>>>>>>>>>>PLOTTING SOME DATAS>>>>>>>>>>>>>>>>>"
 echo "Wait................"
 cd run3/
 matlab -nodesktop -nosplash -r "plot_res; exit;"
+matlab -nodesktop -nosplash -r "dist_part; exit;"
 cd ..
 echo "DONE!"
 echo "COPYING PLOTS TO GIT....."
