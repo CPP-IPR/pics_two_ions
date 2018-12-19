@@ -17,9 +17,10 @@ subplot(312)
 scatter(B(1:length(B),1),B(1:length(B),2),'.');
 title('Phase Space for Ion-1');
 subplot(313)
-scatter(C(1:length(C),1),C(1:length(C),2),'.'); 
-print('phase_space_all','-dpng');
+scatter(C(1:length(C),1),C(1:length(C),2),'.');
 title('Phase Space for Ion-2');
+print('phase_space_all','-dpng');
+
 %% VDF on location
 
 range1 = [0.0E-3, 0.7E-3, 1.1E-3, 1.5E-3];
