@@ -20,13 +20,12 @@ ATOMIC_WEIGHT_ION[1]=4.0
 DIR[0]="run1"
 DIR[1]="run2"
 DIR[2]="run3"
-i=0
 ######################################################
 #
 #		     RUN - 1
 #
 #####################################################
-for i in $(seq 1 1 3)
+for i in $(seq 0 1 2)
     do
     rm input.txt
     touch input.txt
@@ -49,7 +48,8 @@ for i in $(seq 1 1 3)
     echo "MOVING DATA"
     mkdir ${DIR[$i]}
     mv output ${DIR[$i]}/output
-    mv *.dat ${DIR[$i]}/*
+    cp *.dat ${DIR[$i]}/
+    rm *.dat
 
     echo "DATA STORED SUCCESSFULLY"
     echo "MOVING EXECUTABLES AND INPUT FILES"
@@ -62,8 +62,9 @@ for i in $(seq 1 1 3)
     echo ">>>>>>>>>>>>>>>PLOTTING SOME DATAS>>>>>>>>>>>>>>>>>"
     echo "Wait................"
     cd ${DIR[$i]}/
-    /Applications/MATLAB_R2014b.app/bin/matlab -nodesktop -nosplash -r "plot_res; exit;"
-    #matlab -nodesktop -nosplash -r "dist_part; exit;"
+    #/Applications/MATLAB_R2014b.app/bin/matlab -nodesktop -nosplash -r "plot_res; exit;"
+    matlab -nodesktop -nosplash -r "plot_res; exit;"
+    matlab -nodesktop -nosplash -r "dist_part; exit;"
     cd ..
     echo "DONE!"
     echo "COPYING PLOTS TO GIT....."
