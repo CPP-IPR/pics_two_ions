@@ -10,7 +10,7 @@ echo "Housekeeping in progress....."
 rm -rf run1 run2 run3
 echo "Housekeeping Completed!"
 ################ INITIALIZATION #######################
-TIMESTEP[0]=1000;
+TIMESTEP[0]=5000;
 
 PERCENT[0]=0.8
 PERCENT[1]=0.5
@@ -43,7 +43,7 @@ for i in $(seq 0 1 2)
 
     #######################################################
     echo "Compiling the SOURCE CODE"
-    g++ -std=c++11 two_ions_v2.cpp
+    g++ -std=c++11 two_ions_v3.cpp
     echo "Running ......."
     ./a.out
     ######################################################
