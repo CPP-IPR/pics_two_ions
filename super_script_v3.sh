@@ -10,6 +10,8 @@ echo "Housekeeping in progress....."
 rm -rf run1 run2 run3
 echo "Housekeeping Completed!"
 ################ INITIALIZATION #######################
+TIMESTEP[0]=1000;
+
 PERCENT[0]=0.8
 PERCENT[1]=0.5
 PERCENT[2]=0.3
@@ -29,6 +31,8 @@ for i in $(seq 0 1 2)
     do
     rm input.txt
     touch input.txt
+    echo "Final_Time_Step" >> input.txt
+    echo "${TIMESTEP[0]}" >> input.txt
     echo "Percentage_of_first_ions" >> input.txt
     echo "${PERCENT[$i]}" >> input.txt
     echo "Atomic_weight_of_heavier_ion" >> input.txt

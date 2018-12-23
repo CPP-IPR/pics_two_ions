@@ -80,7 +80,7 @@ const int NUM_IONS_2 = 20000;      // Number of simulation ions
 const int NUM_ELECTRONS = 50000; // Number of simulation electrons
 
 const int NC =  200;             // Total number of cells
-const int NUM_TS = 5000;          // Total time steps 
+const int NUM_TS = 1000;          // Total time steps (default)
 
 /* Class Domain: Hold the domain parameters*/
 class Domain
@@ -195,6 +195,10 @@ int main()
 	/* FOR LOADING INPUTS ADDED BY SAYAN on 12/12/2018*/
 	vector<string> var;
 	getItems(var,"input.txt");
+    
+    
+    NUM_TS = std::stoi(var[1]);         /* Modify the final time using input file*/
+    
 	
 	/*Construct the domain parameters*/	
 	domain.ni = NC+1;
@@ -230,9 +234,9 @@ int main()
 	alpha = 0.3 means 30 percent of that species*/
 	
 	/* STORING DATA FROM VECTOR TO VARIABLE ADDED BY SAYAN on 12/12/2018*/
-	double ALP = std::stod(var[1]); 
-	double mass_1 = std::stod(var[3])*AMU;
-	double mass_2 = std::stod(var[5])*AMU;	
+	double ALP = std::stod(var[3]);
+	double mass_1 = std::stod(var[5])*AMU;
+	double mass_2 = std::stod(var[7])*AMU;	
 
 	
 	// double ALP = 0.8; // Determines the percentage contribution of First Ion.
