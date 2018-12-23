@@ -1,0 +1,8 @@
+Final_Time_Step
+5000
+Percentage_of_first_ions
+0.3
+Atomic_weight_of_heavier_ion
+8.0
+Atomic_weight_of_lighter_ion
+4.0
