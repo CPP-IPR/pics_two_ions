@@ -80,7 +80,7 @@ const int NUM_IONS_2 = 20000;      // Number of simulation ions
 const int NUM_ELECTRONS = 50000; // Number of simulation electrons
 
 const int NC =  200;             // Total number of cells
-const int NUM_TS = 1000;          // Total time steps 
+const int NUM_TS = 1000;          // Total time steps (default)
 
 /* Class Domain: Hold the domain parameters*/
 class Domain
@@ -195,7 +195,7 @@ int main()
 	/* FOR LOADING INPUTS ADDED BY SAYAN on 12/12/2018*/
 	vector<string> var;
 	getItems(var,"input.txt");
-	
+    
 	/*Construct the domain parameters*/	
 	domain.ni = NC+1;
 	domain.dx = DX;
