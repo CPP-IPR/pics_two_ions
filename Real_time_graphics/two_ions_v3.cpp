@@ -163,7 +163,9 @@ FILE *f1;
 FILE *f2;
 FILE *f3;
 FILE *file_sp;
-FILE* gnuplotPipe = popen("/usr/local/bin/gnuplot", "w"); //real time plot using GNUPLOT SAYAN 23/12/2018
+
+//FILE* gnuplotPipe = popen("/usr/local/bin/gnuplot", "w"); //real time plot using GNUPLOT SAYAN 23/12/2018 VER: OSX
+FILE* gnuplotPipe = popen("/usr/bin/gnuplot", "w"); //real time plot using GNUPLOT SAYAN 23/12/2018 VER: UBUNTU
 
 // Define Helper functions
 void Init(Species *species);
@@ -198,7 +200,7 @@ int main()
 	getItems(var,"input.txt");
     
     
-    NUM_TS = std::stoi(var[1]);         /* Modify the final time using input file*/
+    	NUM_TS = std::stoi(var[1]);         /* Modify the final time using input file*/
     
 	
 	/*Construct the domain parameters*/	
