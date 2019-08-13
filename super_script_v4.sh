@@ -74,3 +74,4 @@ cp diagnostics/* ${DIR[$i]}/
 echo "DONE!"
 done
 echo "ALL DONE!!!!!"
+########
