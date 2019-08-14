@@ -202,7 +202,7 @@ int main()
     
     
     double VDF_LOC1 = 0.001;
-    double VDF_LOC2 = 0.004;
+    double VDF_LOC2 = 0.0012;
     
     
     /*Construct the domain parameters*/
