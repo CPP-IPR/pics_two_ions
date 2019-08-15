@@ -161,6 +161,8 @@ FILE *f1;
 FILE *f2;
 FILE *f3;
 FILE *f4;   // ADDED BY SAYAN 14/08/19
+FILE *f5;   // ADDED BY SAYAN 14/08/19
+
 FILE *file_sp;
 FILE* gnuplotPipe1 = popen("/usr/local/bin/gnuplot", "w"); //real time plot using GNUPLOT SAYAN 23/12/2018
 FILE* gnuplotPipe2 = popen("/usr/local/bin/gnuplot", "w"); //real time plot using GNUPLOT SAYAN 23/12/2018
@@ -201,8 +203,8 @@ int main()
     NUM_TS = std::stoi(var[1]);         /* Modify the final time using input file*/
     
     
-    double VDF_LOC1 = 0.001;
-    double VDF_LOC2 = 0.0012;
+    double VDF_LOC1 = std::stod(var[9]); //0.001;
+    double VDF_LOC2 = std::stod(var[11]); //0.0012;
     
     
     /*Construct the domain parameters*/
@@ -359,9 +361,13 @@ int main()
             sprintf(NAME,"output/e%d.dat",ts);
             f3 = fopen(NAME,"w");
             
+            //Added by SAYAN 14/08/2019 for VDF data
             sprintf(NAME,"vdf_output/i1%d.dat",ts);
             f4 = fopen(NAME,"w");
             
+            sprintf(NAME,"vdf_output/i2%d.dat",ts);
+            f5 = fopen(NAME,"w");
+            ///////////////////////////////////////
             double max_phi = phi[0];
             for(int i=0; i<domain.ni; i++)
                 if (phi[i]>max_phi) max_phi=phi[i];
@@ -383,13 +389,14 @@ int main()
             Write_Single_Particle(&electrons);
             
             Write_VDF(f4,ts,VDF_LOC1,VDF_LOC2, &ions1);  //Added by SAYAN 14/08/2019
+            Write_VDF(f5,ts,VDF_LOC1,VDF_LOC2, &ions2);  //Added by SAYAN 14/08/2019
             
             // TEST for live graphics
             fprintf(gnuplotPipe1, "plot 'output/i1%d.dat' using 1:2 title 'Ion -1  Phase Space' with dots,'output/i2%d.dat' using 1:2 title 'Ion -2  Phase Space' with dots\n",ts,ts);
             fflush(gnuplotPipe1);
             
             
-            fprintf(gnuplotPipe2, "plot 'vdf_output/i1%d.dat' using 1:(0.1) smooth kdensity bandwidth 1. title 'VDF Ion'\n",ts);
+            fprintf(gnuplotPipe2, "plot 'vdf_output/i1%d.dat' using 1:(1) smooth kdensity bandwidth 1. title 'VDF Ion-1','vdf_output/i2%d.dat' using 1:(1) smooth kdensity bandwidth 1. title 'VDF Ion-2'\n",ts,ts);
             fflush(gnuplotPipe2);
         }
         

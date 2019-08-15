@@ -19,6 +19,9 @@ PERCENT[2]=0.3
 ATOMIC_WEIGHT_ION[0]=8.0
 ATOMIC_WEIGHT_ION[1]=4.0
 
+VDF_LOC[0] = 0.001
+VDF_LOC[1] = 0.0012
+
 DIR[0]="run1"
 DIR[1]="run2"
 DIR[2]="run3"
@@ -47,6 +50,10 @@ echo "Atomic_weight_of_heavier_ion" >> input.txt
 echo "${ATOMIC_WEIGHT_ION[0]}" >> input.txt
 echo "Atomic_weight_of_lighter_ion" >> input.txt
 echo "${ATOMIC_WEIGHT_ION[1]}" >> input.txt
+echo "VDF_location_1" >> input.txt
+echo "${VDF_LOC[0]}" >> input.txt
+echo "VDF_location_2" >> input.txt
+echo "${VDF_LOC[1]}" >> input.txt
 echo "Congrats!Input file has been successfully created."
 ######################################################
 #
