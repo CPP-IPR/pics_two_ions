@@ -33,6 +33,13 @@
 # include <cstring>
 # include <fstream>
 
+<<<<<<< HEAD
+=======
+#ifdef _linux_
+#define PATH "/usr/bin/gnuplot"     //real time plot using GNUPLOT SAYAN 16/08/2019
+#endif
+
+>>>>>>> 3bcafd524bfbff658a6f50c587e3aa9cf6b0965a
 #ifdef _APPLE_
 #define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
 
