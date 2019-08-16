@@ -33,6 +33,15 @@
 # include <cstring>
 # include <fstream>
 
+#ifdef _linux_
+#define PATH "/usr/bin/gnuplot"     //real time plot using GNUPLOT SAYAN 16/08/2019
+
+#elif defined _APPLE_
+#define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
+#endif
+
+
+
 using namespace std;
 
 /* Random Number Generator */
@@ -164,8 +173,9 @@ FILE *f4;   // ADDED BY SAYAN 14/08/19
 FILE *f5;   // ADDED BY SAYAN 14/08/19
 
 FILE *file_sp;
-FILE* gnuplotPipe1 = popen("/usr/local/bin/gnuplot", "w"); //real time plot using GNUPLOT SAYAN 23/12/2018
-FILE* gnuplotPipe2 = popen("/usr/local/bin/gnuplot", "w"); //real time plot using GNUPLOT SAYAN 23/12/2018
+
+FILE* gnuplotPipe1 = popen(PATH, "w"); //real time plot using GNUPLOT SAYAN 23/12/2018
+FILE* gnuplotPipe2 = popen(PATH, "w"); //real time plot using GNUPLOT SAYAN 23/12/2018
 
 // Define Helper functions
 void Init(Species *species);
@@ -392,8 +402,8 @@ int main()
             Write_VDF(f5,ts,VDF_LOC1,VDF_LOC2, &ions2);  //Added by SAYAN 14/08/2019
             
             // TEST for live graphics
-            fprintf(gnuplotPipe1, "plot 'output/i1%d.dat' using 1:2 title 'Ion -1  Phase Space' with dots,'output/i2%d.dat' using 1:2 title 'Ion -2  Phase Space' with dots\n",ts,ts);
-            fflush(gnuplotPipe1);
+            fprintf(gnuplotPipe1, "plot 'output/i1%d.dat' using 1:2 title 'Ion -1  Phase Space' with dots,'output/i2%d.dat' using 1:2 title 'Ion -2  Phase Space' with dots\n",ts,ts);            
+	    fflush(gnuplotPipe1);
             
             
             fprintf(gnuplotPipe2, "plot 'vdf_output/i1%d.dat' using 1:(1) smooth kdensity bandwidth 1. title 'VDF Ion-1','vdf_output/i2%d.dat' using 1:(1) smooth kdensity bandwidth 1. title 'VDF Ion-2'\n",ts,ts);
