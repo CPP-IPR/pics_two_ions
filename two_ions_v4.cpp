@@ -33,16 +33,14 @@
 # include <cstring>
 # include <fstream>
 
-/*
-#ifdef _APPLE_
+#ifdef _MACH_
 #define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
-
 #else
 #define PATH "/usr/bin/gnuplot"     //real time plot using GNUPLOT SAYAN 16/08/2019
 #endif
-*/
 
-#define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
+
+//#define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
 
 using namespace std;
 
