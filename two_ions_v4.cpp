@@ -33,6 +33,7 @@
 # include <cstring>
 # include <fstream>
 
+/* OS IDENTIFICATION */
 #ifdef __MACH__
 #define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
 #elif __UNIX__
