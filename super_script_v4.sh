@@ -32,7 +32,7 @@ DIR[2]="run3"
 #####################################################
 touch input.txt
 echo "Compiling the SOURCE CODE"
-g++ -std=c++11 two_ions_v3.cpp
+g++ -std=c++11 two_ions_v4.cpp
 ######################################################
 #
 #             Input File Creation

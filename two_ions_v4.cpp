@@ -41,7 +41,7 @@
 #define PATH "/usr/bin/gnuplot"     //real time plot using GNUPLOT SAYAN 16/08/2019
 #endif
 
-
+//#define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
 
 using namespace std;
 
