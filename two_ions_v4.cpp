@@ -33,14 +33,14 @@
 # include <cstring>
 # include <fstream>
 
-#ifdef _MACH_
+#ifdef __MACH__
 #define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
-#else
+#elif __UNIX__
 #define PATH "/usr/bin/gnuplot"     //real time plot using GNUPLOT SAYAN 16/08/2019
+#else
+#error "Unknown compiler"
 #endif
 
-
-//#define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
 
 using namespace std;
 
