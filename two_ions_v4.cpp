@@ -33,15 +33,16 @@
 # include <cstring>
 # include <fstream>
 
-
+/*
 #ifdef _APPLE_
 #define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
 
 #else
 #define PATH "/usr/bin/gnuplot"     //real time plot using GNUPLOT SAYAN 16/08/2019
 #endif
+*/
 
-//#define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
+#define PATH "/usr/local/bin/gnuplot" //real time plot using GNUPLOT SAYAN 16/08/2019
 
 using namespace std;
 
@@ -82,9 +83,10 @@ const double ELECTRON_TEMP = 1; // electron temperature in eV
 const double ION_TEMP_1 = 0.026;  // ion temperature in eV
 const double ION_TEMP_2 = 0.026;  // ion temperature in eV
 
-const int NUM_IONS_1 = 20000;      // Number of simulation ions
-const int NUM_IONS_2 = 20000;      // Number of simulation ions
-const int NUM_ELECTRONS = 50000; // Number of simulation electrons
+/* CHANGED TYPE FROM CONST TO VAR FOR INPUT DATA CONTROL  */
+int NUM_IONS_1 = 20000;      // Number of simulation ions
+int NUM_IONS_2 = 20000;      // Number of simulation ions
+int NUM_ELECTRONS = 50000; // Number of simulation electrons
 
 const int NC =  200;             // Total number of cells
 int NUM_TS = 1000;          // Total time steps (default)
@@ -211,11 +213,25 @@ int main()
     vector<string> var;
     getItems(var,"input.txt");
     
+    /* STORING DATA FROM VECTOR TO VARIABLE ADDED BY SAYAN on 12/12/2018*/
+    
     NUM_TS = std::stoi(var[1]);         /* Modify the final time using input file*/
+
+    double ALP = std::stod(var[3]);
+    double mass_1 = std::stod(var[5])*AMU;
+    double mass_2 = std::stod(var[7])*AMU;
     
-    
+    /*  VDF LOCATION */
     double VDF_LOC1 = std::stod(var[9]); //0.001;
     double VDF_LOC2 = std::stod(var[11]); //0.0012;
+    
+    /* NUM OF COM PARTICLE */
+    NUM_IONS_1 = std::stoi(var[13]);
+    NUM_IONS_2 = std::stoi(var[15]);
+    NUM_ELECTRONS = std::stoi(var[17]);
+    
+    /* GRAPHICS CONFIG*/
+    bool GRAPHICS = std::stoi(var[19]);
     
     
     /*Construct the domain parameters*/
@@ -250,12 +266,6 @@ int main()
     /* Grab a parameter alpha such that 0<alpha<1.
      This parameter is responsible for the percentage of two ions respectively.
      alpha = 0.3 means 30 percent of that species*/
-    
-    /* STORING DATA FROM VECTOR TO VARIABLE ADDED BY SAYAN on 12/12/2018*/
-    double ALP = std::stod(var[3]);
-    double mass_1 = std::stod(var[5])*AMU;
-    double mass_2 = std::stod(var[7])*AMU;
-    
     
     // double ALP = 0.8; // Determines the percentage contribution of First Ion.
     //double mass_1 = 8*AMU; // mass of the heavier particle
@@ -402,13 +412,19 @@ int main()
             Write_VDF(f4,ts,VDF_LOC1,VDF_LOC2, &ions1);  //Added by SAYAN 14/08/2019
             Write_VDF(f5,ts,VDF_LOC1,VDF_LOC2, &ions2);  //Added by SAYAN 14/08/2019
             
-            // TEST for live graphics
-            fprintf(gnuplotPipe1, "plot 'output/i1%d.dat' using 1:2 title 'Ion -1  Phase Space' with dots,'output/i2%d.dat' using 1:2 title 'Ion -2  Phase Space' with dots\n",ts,ts);            
-	    fflush(gnuplotPipe1);
+            // For live graphics
             
+            if (GRAPHICS==true) {
+                
+                fprintf(gnuplotPipe1, "plot 'output/i1%d.dat' using 1:2 title 'Ion -1  Phase Space' with dots,'output/i2%d.dat' using 1:2 title 'Ion -2  Phase Space' with dots\n",ts,ts);
+                fflush(gnuplotPipe1);
+                
+                
+                fprintf(gnuplotPipe2, "plot 'vdf_output/i1%d.dat' using 1:(1) smooth kdensity bandwidth 1. title 'VDF Ion-1','vdf_output/i2%d.dat' using 1:(1) smooth kdensity bandwidth 1. title 'VDF Ion-2'\n",ts,ts);
+                fflush(gnuplotPipe2);
+                
+            }
             
-            fprintf(gnuplotPipe2, "plot 'vdf_output/i1%d.dat' using 1:(1) smooth kdensity bandwidth 1. title 'VDF Ion-1','vdf_output/i2%d.dat' using 1:(1) smooth kdensity bandwidth 1. title 'VDF Ion-2'\n",ts,ts);
-            fflush(gnuplotPipe2);
         }
         
         Time += DT;

@@ -22,6 +22,10 @@ ATOMIC_WEIGHT_ION[1]=4.0
 VDF_LOC[0] = 0.001
 VDF_LOC[1] = 0.0012
 
+NUM_PARTICLES[0] = 20000  #NUM_IONS_1
+NUM_PARTICLES[1] = 20000  #NUM_IONS_2
+NUM_PARTICLES[2] = 50000  #NUM_ELECTRONS
+
 DIR[0]="run1"
 DIR[1]="run2"
 DIR[2]="run3"
@@ -44,16 +48,27 @@ rm input.txt
 touch input.txt
 echo "Final_Time_Step" >> input.txt
 echo "${TIMESTEP[0]}" >> input.txt
-echo "Percentage_of_first_ions" >> input.txt
+
+echo "Percentage_of_first_ions_INPUT_OPTION_0_TO_1" >> input.txt
 echo "${PERCENT[$i]}" >> input.txt
+
 echo "Atomic_weight_of_heavier_ion" >> input.txt
 echo "${ATOMIC_WEIGHT_ION[0]}" >> input.txt
 echo "Atomic_weight_of_lighter_ion" >> input.txt
 echo "${ATOMIC_WEIGHT_ION[1]}" >> input.txt
+
 echo "VDF_location_1" >> input.txt
 echo "${VDF_LOC[0]}" >> input.txt
 echo "VDF_location_2" >> input.txt
 echo "${VDF_LOC[1]}" >> input.txt
+
+echo "NUM_IONS_1" >> input.txt
+echo "${NUM_PARTICLES[0]}" >> input.txt
+echo "NUM_IONS_2" >> input.txt
+echo "${NUM_PARTICLES[1]}" >> input.txt
+echo "NUM_ELECTRONS" >> input.txt
+echo "${NUM_PARTICLES[2]}" >> input.txt
+
 echo "Congrats!Input file has been successfully created."
 ######################################################
 #

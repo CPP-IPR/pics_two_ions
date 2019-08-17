@@ -1,6 +1,6 @@
 Final_Time_Step
 1000
-Percentage_of_first_ions
+Percentage_of_first_ions_INPUT_OPTION_0_TO_1
 0.3
 Atomic_weight_of_heavier_ion
 8.0
@@ -10,3 +10,11 @@ VDF_location_1
 0.001
 VDF_location_2
 0.0012
+NUM_IONS_1
+20000
+NUM_IONS_2
+20000
+NUM_ELECTRONS
+50000
+GRAPHICS_INPUT_OPTION_0_OR_1
+1
