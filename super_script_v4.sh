@@ -26,6 +26,8 @@ NUM_PARTICLES[0] = 20000  #NUM_IONS_1
 NUM_PARTICLES[1] = 20000  #NUM_IONS_2
 NUM_PARTICLES[2] = 50000  #NUM_ELECTRONS
 
+GRAPHICS[0]=1;
+
 DIR[0]="run1"
 DIR[1]="run2"
 DIR[2]="run3"
@@ -68,6 +70,9 @@ echo "NUM_IONS_2" >> input.txt
 echo "${NUM_PARTICLES[1]}" >> input.txt
 echo "NUM_ELECTRONS" >> input.txt
 echo "${NUM_PARTICLES[2]}" >> input.txt
+
+echo "GRAPHICS_INPUT_OPTION_0_OR_1" >> input.txt
+echo "${GRAPHICS[0]}" >> input.txt
 
 echo "Congrats!Input file has been successfully created."
 ######################################################

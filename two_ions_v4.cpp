@@ -419,8 +419,7 @@ int main()
                 fprintf(gnuplotPipe1, "plot 'output/i1%d.dat' using 1:2 title 'Ion -1  Phase Space' with dots,'output/i2%d.dat' using 1:2 title 'Ion -2  Phase Space' with dots\n",ts,ts);
                 fflush(gnuplotPipe1);
                 
-                
-                fprintf(gnuplotPipe2, "plot 'vdf_output/i1%d.dat' using 1:(1) smooth kdensity bandwidth 1. title 'VDF Ion-1','vdf_output/i2%d.dat' using 1:(1) smooth kdensity bandwidth 1. title 'VDF Ion-2'\n",ts,ts);
+                fprintf(gnuplotPipe2, "plot 'vdf_output/i1%d.dat' using 1:(1) smooth kdensity bandwidth 50. title 'VDF Ion-1','vdf_output/i2%d.dat' using 1:(1) smooth kdensity bandwidth 50. title 'VDF Ion-2'\n",ts,ts);
                 fflush(gnuplotPipe2);
                 
             }
