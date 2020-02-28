@@ -3,6 +3,6 @@ The code simulates the plasma with two species of positive ions between two boun
 
 Principal Developers: 
 1. Dr. Rakesh Moulick, Lovely Professional University, Punjab, India.
-2. Dr. Sayan Adhikari, Centre of Plasma Physics, Institute for Plasma Research (CPP-IPR), Assam, India.
+2. Dr. Sayan Adhikari, University of Oslo (UiO), Norway.
 
 Contact at sayan.adhikari@cppipr.res.in for more details.
